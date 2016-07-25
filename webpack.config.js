@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = {
     devtool: 'eval-source-map',
     entry: __dirname + "/app/index.js",
@@ -26,6 +28,10 @@ module.exports = {
 
     postcss: [
         require('autoprefixer')
+    ],
+
+    plugins: [
+        new webpack.BannerPlugin("Have fun. Dont forget to bookmark this website :) CollegeBeers.Com")
     ],
 
     devServer: {
