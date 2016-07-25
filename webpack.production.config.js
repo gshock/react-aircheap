@@ -6,7 +6,7 @@ module.exports = {
     entry: __dirname + "/app/main.js",
     output: {
         path: __dirname + "/build",
-        filename: "bundle.js"
+        filename: "[name]-[hash].js"
     },
     module: {
         loaders: [
@@ -27,7 +27,7 @@ module.exports = {
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin(),
-        new ExtractTextPlugin("style.css")
+        new ExtractTextPlugin("[name]-[hash].css")
     ],
 }
 
