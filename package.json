@@ -4,7 +4,8 @@
   "description": "A React+WebPack Boilerplate",
   "main": "index.js",
   "scripts": {
-    "start": "webpack",
+    "start": "node_modules/.bin/webpack-dev-server --progress --port 5000",
+    "build": "webpack --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -15,6 +16,7 @@
   "author": "Gerardo Arevalo",
   "license": "ISC",
   "devDependencies": {
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
   }
 }
