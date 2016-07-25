@@ -5,6 +5,16 @@ module.exports = {
         path: __dirname + "/public",
         filename: "bundle.js"
     },
+    
+    module: {
+        loaders: [
+            {
+                test: /\.json$/,
+                loader: "json"
+            }
+        ]
+    },
+    
     devServer: {
         contentBase: "./public",
         colors: true,
