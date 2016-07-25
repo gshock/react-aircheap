@@ -9,8 +9,8 @@
   },
   "scripts": {
     "start": "node_modules/.bin/webpack-dev-server --progress --port 5000",
-    "build": "webpack --progress",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "NODE_ENV=production node_modules/.bin/webpack –config ./webpack.production.config.js --progress",
+    "test" : "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "react",
