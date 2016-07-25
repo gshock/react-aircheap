@@ -1,0 +1,20 @@
+{
+  "name": "react-g-boilerplate",
+  "version": "1.0.0",
+  "description": "A React+WebPack Boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "webpack",
+    "boilerplate"
+  ],
+  "author": "Gerardo Arevalo",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^1.13.1"
+  }
+}
