@@ -38,6 +38,8 @@
   "dependencies": {
     "json-loader": "^0.5.4",
     "react": "^15.2.1",
-    "react-dom": "^15.2.1"
+    "react-auto-suggest": "0.0.12",
+    "react-dom": "^15.2.1",
+    "whatwg-fetch": "^1.0.0"
   }
 }
