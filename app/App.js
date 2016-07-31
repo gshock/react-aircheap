@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import {Container} from 'flux/utils';
-import Autosuggest from 'react-auto-suggest';
+import Autosuggest from 'react-autosuggest-legacy';
 import AirportStore from './stores/AirportStore';
 import AirportActionCreators from './actions/AirportActionCreators';
-
-import '../public/styles.css';
 
 class App extends Component {
     getSuggestions(input, callback) {
