@@ -13,7 +13,19 @@ let AirCheapAPI = {
                 // Call the AirportActionCreators error action with the error object
                 AirportActionCreators.fetchAirportsError(error);
             });
+    },
+
+    fetchTickets(origin, destination) {
+        fetch('flights.json')
+            .then((response) => response.json())
+            .then((responseData) => {
+                AirportActionCreators.fetchTicketsSuccess(responseData);
+            })
+            .catch((error) => {
+                AirportActionCreators.fetchTicketsError(error);
+            });
     }
+
 };
 
 export default AirCheapAPI;
