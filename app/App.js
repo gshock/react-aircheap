@@ -19,10 +19,16 @@ class App extends Component {
         callback(null, suggestions);
     }
 
+    handleSelect(target, suggestion, event) {
+        const airportCodeRegex = /\(([^)]+)\)/;
+        let airportCode = airportCodeRegex.exec(suggestion)[1];
+        AirportActionCreators.chooseAirport(target, airportCode);
+    }
+
     componentDidMount() {
         AirportActionCreators.fetchAirports();
     }
-    
+
     render() {
         return (
             <div>
@@ -33,10 +39,12 @@ class App extends Component {
                     </div>
                     <div className="header-route">
                         <Autosuggest id='origin'
-                            suggestions={this.getSuggestions.bind(this)}
+                            suggestions={this.getSuggestions.bind(this) }
+                            onSuggestionSelected={this.handleSelect.bind(this, 'origin') }
                             inputAttributes={{ placeholder: 'From' }} />
                         <Autosuggest id='destination'
-                            suggestions={this.getSuggestions.bind(this)}
+                            suggestions={this.getSuggestions.bind(this) }
+                            onSuggestionSelected={this.handleSelect.bind(this, 'destination') }
                             inputAttributes={{ placeholder: 'To' }} />
                     </div>
                 </header>
@@ -45,9 +53,12 @@ class App extends Component {
     }
 }
 
-App.getStores = () => ([AirportStore]);
+App.getStores = () => ([AirportStore, RouteStore, TicketStore]);
 App.calculateState = (prevState) => ({
-    airports: AirportStore.getState()
+    airports: AirportStore.getState(),
+    origin: RouteStore.get('origin'),
+    destination: RouteStore.get('destination'),
+    tickets: TicketStore.getState()
 });
 
 const AppContainer = Container.create(App);
