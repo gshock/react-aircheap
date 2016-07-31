@@ -3,6 +3,9 @@ import { render } from 'react-dom';
 import {Container} from 'flux/utils';
 import Autosuggest from 'react-autosuggest-legacy';
 import AirportStore from './stores/AirportStore';
+import RouteStore from './stores/RouteStore';
+import TicketStore from './stores/TicketStore';
+import TicketItem from './components/TicketItem';
 import AirportActionCreators from './actions/AirportActionCreators';
 
 class App extends Component {
@@ -29,7 +32,19 @@ class App extends Component {
         AirportActionCreators.fetchAirports();
     }
 
+    componentWillUpdate(nextProps, nextState) {
+        let originAndDestinationSelected = nextState.origin && nextState.destination;
+        let selectionHasChangedSinceLastUpdate = nextState.origin !== this.state.origin ||
+            nextState.destination !== this.state.destination;
+        if (originAndDestinationSelected && selectionHasChangedSinceLastUpdate) {
+            AirportActionCreators.fetchTickets(nextState.origin, nextState.destination);
+        }
+    }
+
     render() {
+        let ticketList = this.state.tickets.map((ticket) => (
+            <TicketItem key={ticket.id} ticket={ticket} />
+        ));
         return (
             <div>
                 <header>
@@ -48,6 +63,10 @@ class App extends Component {
                             inputAttributes={{ placeholder: 'To' }} />
                     </div>
                 </header>
+                <div>
+                    {ticketList}
+                </div>
+
             </div>
         );
     }
